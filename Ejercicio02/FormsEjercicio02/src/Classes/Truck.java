@@ -25,56 +25,28 @@ public class Truck {
         this.enmov = enmov;
     }
     
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-    public double getPeso() {
-        return this.peso;
-    }
+    public double getPeso()      {    return this.peso;         }
+    public double getGas()       {    return this.gas;          }
+    public double getRecorrido() {    return this.recorrido;    }
+    public boolean getStatus()   {    return this.enmov;        }
+    public double getVelocidad() {    return this.vel;          }
     
-    public void setGas(double gas) {
-        this.gas = gas;
-    }
-    public double getGas() {
-        return this.gas;
-    }
     
+    public void setPeso(double peso)           {    this.peso = peso;               }  
+    public void setGas(double gas)             {    this.gas = gas;                 }
+    public void setRecorrido(double recorrido) {    this.recorrido = recorrido;     }
+    public void EnMovimiento()                 {    this.enmov = true;              } 
     public void setVelocidad(double vel) {
-        this.vel = vel;
-    }
-    public double getVelocidad() {
-        return this.vel;
-    }
-    
-    public void setRecorrido(double recorrido) {
-        this.recorrido = recorrido;
-    }
-    public double getRecorrido() {
-        return this.recorrido;
-    }
-    
-    public void EnMovimiento() {
-        this.enmov = true;
-    }
-    public void Frenar(double vel) {
-        double velFreno = this.vel - vel;
-        for (int i = 0; i < velFreno; i++) {
-            try {
-                double seg = 30/velFreno;
-                Thread.sleep(Math.round(seg));
-                this.vel -= 1; 
-            } catch (Exception e) {
-                this.vel -= 1;
-            } 
-        }
-        
+        this.vel = vel; 
         if (this.vel <= 0) {
             enmov = false;
             this.vel = 0;
+        }else if (this.vel > 0) {
+            EnMovimiento();
         }
-        
     }
-    public boolean getStatus() {
-        return this.enmov;
-    }
+    
+    
+       
+    
 }
